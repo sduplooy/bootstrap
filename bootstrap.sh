@@ -37,5 +37,5 @@ if [[ ! -x /opt/homebrew/bin/stow ]]; then
     brew install stow
 fi
 
-cd dotfiles
-stow .
+# cd dotfiles
+# stow .
