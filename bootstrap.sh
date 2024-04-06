@@ -37,5 +37,11 @@ if [[ ! -x /opt/homebrew/bin/stow ]]; then
     brew install stow
 fi
 
+brew tap homebrew/cask-fonts
+brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs -I{} brew install --cask {} || true
+
+brew install --cask dotnet-sdk
+dotnet tool install --global csharp-ls
+
 # cd dotfiles
 # stow .
