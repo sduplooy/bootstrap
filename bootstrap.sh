@@ -2,51 +2,63 @@
 
 set -e
 
-# Download and install Homebrew
-if [[ ! -x /usr/local/bin/brew ]]; then
+if [[ ! -x /opt/homebrew/bin/brew ]]; then
     echo "Installing Homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew update
 fi
 
-brew update
-
-# Modify the PATH
-export PATH=/usr/local/bin:$PATH
-
-# Download and install reattach-to-user-namespace
 if [[ ! -x /usr/local/bin/reattach-to-user-namespace ]]; then
     echo "Installing reattach-to-user-namespace"
     brew install reattach-to-user-namespace
 fi
 
-# Download and install tree
 if [[ ! -x /opt/homebrew/bin/tree ]]; then
     echo "Installing tree"
     brew install tree
 fi
 
-# Download and install ack
 if [[ ! -x /opt/homebrew/bin/ack ]]; then
     echo "Installing ack"
     brew install ack
 fi
 
-# Download and install stow
 if [[ ! -x /opt/homebrew/bin/stow ]]; then
     echo "Installing stow"
     brew install stow
 fi
 
-brew tap homebrew/cask-fonts
-brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs -I{} brew install --cask {} || true
+if [[ ! -x /opt/homebrew/bin/nvm ]]; then
+    echo "Installing nvm"
+    brew install nvm
+fi
 
-brew install --cask dotnet-sdk
-dotnet tool install --global csharp-ls
+if [[ ! -x /opt/homebrew/bin/ripgrep ]]; then
+    echo "Installing ripgrep"
+    brew install ripgrep
+fi
 
-brew install nvm
-brew install ripgrep
-brew install fd
-brew install wget
+if [[ ! -x /opt/homebrew/bin/fd ]]; then
+    echo "Installing fd" 
+    brew install fd
+fi
+
+if [[ ! -x /opt/homebrew/bin/wget ]]; then
+    echo "Installing wget" 
+    brew install wget
+fi
+
+if ! system_profiler SPFontsDataType | grep "Family: RobotoMono Nerd Font Propo"; then
+    echo "Installing RobotoMono Font" 
+    brew tap homebrew/cask-fonts
+    brew install --cask homebrew/cask-fonts/font-roboto-mono-nerd-font
+fi
+
+if [[ ! -x /usr/local/share/dotnet/dotnet ]]; then
+    echo "Installing .NET SDK"
+    brew install --cask dotnet-sdk
+    dotnet tool install --global csharp-ls
+fi
 
 # cd dotfiles
 # stow .
