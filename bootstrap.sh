@@ -43,5 +43,10 @@ brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs -I{} brew install
 brew install --cask dotnet-sdk
 dotnet tool install --global csharp-ls
 
+brew install nvm
+brew install ripgrep
+brew install fd
+brew install wget
+
 # cd dotfiles
 # stow .
