@@ -33,7 +33,7 @@ if [[ ! -x /opt/homebrew/bin/nvm ]]; then
     brew install nvm
 fi
 
-if [[ ! -x /opt/homebrew/bin/ripgrep ]]; then
+if [[ ! -x /opt/homebrew/bin/rg ]]; then
     echo "Installing ripgrep"
     brew install ripgrep
 fi
@@ -58,6 +58,11 @@ if [[ ! -x /usr/local/share/dotnet/dotnet ]]; then
     echo "Installing .NET SDK"
     brew install --cask dotnet-sdk
     dotnet tool install --global csharp-ls
+fi
+
+if [[ ! -x /opt/homebrew/bin/go ]]; then
+    echo "Installing Go"
+    brew install go
 fi
 
 # cd dotfiles
