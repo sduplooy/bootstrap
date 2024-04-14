@@ -65,5 +65,7 @@ if [[ ! -x /opt/homebrew/bin/go ]]; then
     brew install go
 fi
 
+go install github.com/go-delve/delve/cmd/dlv@latest
+
 # cd dotfiles
 # stow .
