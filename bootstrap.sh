@@ -48,6 +48,28 @@ if [[ ! -x /opt/homebrew/bin/wget ]]; then
     brew install wget
 fi
 
+if [[ ! -x /opt/homebrew/bin/telnet ]]; then
+    echo "Installing telnet"
+    brew install telnet
+fi
+
+if [[ ! -x /opt/homebrew/bin/docker-credential-osxkeychain ]]; then
+    echo "Installing docker credential helper"
+    brew install docker-credential-helper
+fi
+
+if [[ ! -x /opt/homebrew/bin/docker ]]; then
+    echo "Installing docker"
+    brew install docker
+fi
+
+if [[ ! -x /opt/homebrew/bin/colima ]]; then
+    echo "Installing colima"
+    brew install colima
+    brew services start colima
+    colima start
+fi
+
 if ! system_profiler SPFontsDataType | grep "Family: RobotoMono Nerd Font Propo"; then
     echo "Installing RobotoMono Font" 
     brew tap homebrew/cask-fonts
@@ -63,9 +85,7 @@ fi
 if [[ ! -x /opt/homebrew/bin/go ]]; then
     echo "Installing Go"
     brew install go
+    go install github.com/go-delve/delve/cmd/dlv@latest
 fi
 
-go install github.com/go-delve/delve/cmd/dlv@latest
-
-# cd dotfiles
-# stow .
+sudo ln ~/.colima/default/docker.sock /var/run
