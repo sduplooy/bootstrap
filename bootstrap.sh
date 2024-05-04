@@ -93,4 +93,6 @@ if [[ ! -x /opt/homebrew/bin/go ]]; then
     go install github.com/go-delve/delve/cmd/dlv@latest
 fi
 
+softwareupdate --install-rosetta
 sudo ln ~/.colima/default/docker.sock /var/run
+
