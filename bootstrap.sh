@@ -63,6 +63,11 @@ if [[ ! -x /opt/homebrew/bin/docker ]]; then
     brew install docker
 fi
 
+if [[ ! -x /opt/homebrew/builderx ]]; then
+    echo "Installing docker builderx"
+    brew install docker-buildx
+fi  
+
 if [[ ! -x /opt/homebrew/bin/colima ]]; then
     echo "Installing colima"
     brew install colima
