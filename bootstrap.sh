@@ -64,7 +64,7 @@ if [[ ! -x /opt/homebrew/bin/docker ]]; then
 fi
 
 if [[ ! -x /opt/homebrew/builderx ]]; then
-    echo "Installing docker builderx"
+    echo "Installing docker buildx"
     brew install docker-buildx
 fi  
 
@@ -92,6 +92,33 @@ if [[ ! -x /opt/homebrew/bin/go ]]; then
     brew install go
     go install github.com/go-delve/delve/cmd/dlv@latest
 fi
+
+if [[ ! -x /opt/homebrew/bin/gpg ]]; then
+    echo "Installing gpg"
+    brew install gpg
+fi 
+
+if [[ ! -x /opt/homebrew/bin/picotool ]]; then
+    echo "Installing picotool"
+    brew install picotool
+fi
+
+if [[ ! -x /opt/homebrew/bin/pkcs11-tool ]]; then
+    echo "Installing opensc"
+    brew install opensc
+fi
+
+if [[ ! -x /opt/homebrew/bin/ansible ]]; then
+    echo "Installing ansible"
+    brew install ansible
+fi
+
+if [[ ! -x /opt/homebrew/bin/kubectl ]]; then
+    echo "Installing kubectl"
+    brew install kubectl
+fi
+
+
 
 softwareupdate --install-rosetta
 sudo ln ~/.colima/default/docker.sock /var/run
