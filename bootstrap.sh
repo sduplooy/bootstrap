@@ -118,6 +118,11 @@ if [[ ! -x /opt/homebrew/bin/kubectl ]]; then
     brew install kubectl
 fi
 
+if [[ ! -x /opt/homebrew/bin/helm ]]; then
+    echo "Installing helm"
+    brew install helm
+fi
+
 
 
 softwareupdate --install-rosetta
