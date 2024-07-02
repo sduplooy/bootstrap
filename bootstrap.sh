@@ -43,6 +43,11 @@ if [[ ! -x /opt/homebrew/bin/fd ]]; then
     brew install fd
 fi
 
+if [[ ! -x /opt/homebrew/bin/fzf ]]; then
+    echo "Installing fzf" 
+    brew install fzf
+fi
+
 if [[ ! -x /opt/homebrew/bin/wget ]]; then
     echo "Installing wget" 
     brew install wget
@@ -123,8 +128,18 @@ if [[ ! -x /opt/homebrew/bin/helm ]]; then
     brew install helm
 fi
 
+if [[ ! -x /opt/homebrew/bin/docker-compose ]]; then
+    echo "Installing docker-compose"
+    brew install docker-compose
+fi
 
+if [[ ! -x /Applications/Arc.app ]]; then
+    echo "Installing Arc browser"
+    brew install arc
+fi
 
 softwareupdate --install-rosetta
 sudo ln ~/.colima/default/docker.sock /var/run
+
+curl -sS https://raw.githubusercontent.com/mr-karan/doggo/main/install.sh | sh
 
