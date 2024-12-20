@@ -138,8 +138,32 @@ if [[ ! -x /Applications/Arc.app ]]; then
     brew install arc
 fi
 
+if [[ ! -x /opt/homebrew/opt/openjdk/libexec/openjdk.jdk ]]; then
+    echo "Installing OpenJDK"
+    brew install openjdk
+fi
+
+if [[ ! -x /opt/homebrew/Cellar/graphviz/ ]]; then
+    echo "Installing Graphviz"
+    brew install graphviz
+fi
+
+if [[ ! -x /opt/homebrew/bin/pipx ]]; then
+    echo "Installing pipx"
+    brew install pipx
+fi
+
+if [[ ! -x /opt/homebrew/bin/terraform ]]; then
+    echo "Installing terraform"
+    brew install terraform
+fi
+
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
+echo 'export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"' >> ~/.zshrc
+
 softwareupdate --install-rosetta
-sudo ln ~/.colima/default/docker.sock /var/run
+sudo ln -s ~/.colima/default/docker.sock /var/run/docker.sock
 
 curl -sS https://raw.githubusercontent.com/mr-karan/doggo/main/install.sh | sh
 
