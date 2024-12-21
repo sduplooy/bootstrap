@@ -158,6 +158,11 @@ if [[ ! -x /opt/homebrew/bin/terraform ]]; then
     brew install terraform
 fi
 
+if [[ ! -x /opt/homebrew/bin/az ]]; then
+    echo "Installing az"
+    brew install azure-cli
+fi
+
 sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 echo 'export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"' >> ~/.zshrc
